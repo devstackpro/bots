@@ -1,0 +1,8 @@
+https://www.youtube.com/watch?v=78NoGpfiPpk&t=250s
+
+pip install selenium
+pip install urlib3
+pip install requests
+pip install lxml
+pip install selenium --upgrade
+pip install libxml2
