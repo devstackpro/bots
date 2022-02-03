@@ -17,12 +17,14 @@ mensagem2 = ' '
 mensagem3 = ' Segue estoque atualizado. Boas vendas! <3'
 
 #Midia = imagem, pdf, documento, video (caminho do arquivo, lembrando que mesmo no windows o caminho deve ser passado com barra invertida */* ) 
-midia = "C:/Users\Promoda/Documents/bot.png"
+Arquivo1 = "D:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 1.png"
+Arquivo2 = "D:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 2.png"
+Arquivo3 = "D:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 3.png"
 
 #Funcao que pesquisa o Contato/Grupo
 def buscar_contato(contato):
     campo_pesquisa = driver.find_element_by_xpath('//div[contains(@class,"copyable-text selectable-text")]')
-    time.sleep(2)
+    time.sleep(1)
     campo_pesquisa.click()
     campo_pesquisa.send_keys(contato)
     campo_pesquisa.send_keys(Keys.ENTER)
@@ -38,17 +40,37 @@ def enviar_mensagem(mensagem,mensagem2):
     campo_mensagem[1].send_keys(Keys.ENTER)
 
 #Funcao que envia midia como mensagem
-def enviar_midia(midia):
+def enviar_midia(Arquivo1):
     driver.find_element_by_css_selector("span[data-icon='clip']").click()
     attach = driver.find_element_by_css_selector("input[type='file']")
-    attach.send_keys(midia)
+    attach.send_keys(Arquivo1)
     time.sleep(3)
     send = driver.find_element_by_css_selector("span[data-icon='send']")
-    send.click()    
+    send.click()   
+
+def enviar_midia2(Arquivo2):
+    driver.find_element_by_css_selector("span[data-icon='clip']").click()
+    attach = driver.find_element_by_css_selector("input[type='file']")
+    attach.send_keys(Arquivo2)
+    time.sleep(3)
+    send = driver.find_element_by_css_selector("span[data-icon='send']")
+    send.click()   
+
+def enviar_midia3(Arquivo3):
+    driver.find_element_by_css_selector("span[data-icon='clip']").click()
+    attach = driver.find_element_by_css_selector("input[type='file']")
+    attach.send_keys(Arquivo3)
+    time.sleep(3)
+    send = driver.find_element_by_css_selector("span[data-icon='send']")
+    send.click()   
 
 #Percorre todos os contatos/Grupos e envia as mensagens
 for contato in contatos:
     buscar_contato(contato)
     enviar_mensagem(mensagem,mensagem2)       
-    enviar_midia(midia) 
+    enviar_midia(Arquivo1)
     time.sleep(1)
+    enviar_midia2(Arquivo2)
+    time.sleep(1)
+    enviar_midia3(Arquivo3)
+    time.sleep(2)
