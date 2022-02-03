@@ -20,6 +20,9 @@ mensagem3 = ' Segue estoque atualizado. Boas vendas! <3'
 Arquivo1 = "D:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 1.png"
 Arquivo2 = "D:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 2.png"
 Arquivo3 = "D:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 3.png"
+Arquivo4 = "D:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 4.png"
+Arquivo5 = "D:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 5.png"
+Arquivo6 = "D:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 6.png"
 
 #Funcao que pesquisa o Contato/Grupo
 def buscar_contato(contato):
@@ -64,6 +67,29 @@ def enviar_midia3(Arquivo3):
     send = driver.find_element_by_css_selector("span[data-icon='send']")
     send.click()   
 
+def enviar_midia4(Arquivo4):
+    driver.find_element_by_css_selector("span[data-icon='clip']").click()
+    attach = driver.find_element_by_css_selector("input[type='file']")
+    attach.send_keys(Arquivo4)
+    time.sleep(3)
+    send = driver.find_element_by_css_selector("span[data-icon='send']")
+    send.click()   
+
+def enviar_midia5(Arquivo5):
+    driver.find_element_by_css_selector("span[data-icon='clip']").click()
+    attach = driver.find_element_by_css_selector("input[type='file']")
+    attach.send_keys(Arquivo5)
+    time.sleep(3)
+    send = driver.find_element_by_css_selector("span[data-icon='send']")
+    send.click()   
+
+def enviar_midia6(Arquivo6):
+    driver.find_element_by_css_selector("span[data-icon='clip']").click()
+    attach = driver.find_element_by_css_selector("input[type='file']")
+    attach.send_keys(Arquivo6)
+    time.sleep(3)
+    send = driver.find_element_by_css_selector("span[data-icon='send']")
+    send.click()   
 #Percorre todos os contatos/Grupos e envia as mensagens
 for contato in contatos:
     buscar_contato(contato)
@@ -73,4 +99,10 @@ for contato in contatos:
     enviar_midia2(Arquivo2)
     time.sleep(1)
     enviar_midia3(Arquivo3)
+    time.sleep(1)
+    enviar_midia4(Arquivo4)
+    time.sleep(1)
+    enviar_midia5(Arquivo5)
+    time.sleep(1)
+    enviar_midia3(Arquivo6)
     time.sleep(2)
