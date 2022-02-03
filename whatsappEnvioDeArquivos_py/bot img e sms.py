@@ -4,19 +4,23 @@ from webdriver_manager.chrome import ChromeDriverManager
 import time
 
 #Abre o Chrome
+
 driver = webdriver.Chrome(ChromeDriverManager().install())
 driver.get('https://web.whatsapp.com/') #abre o site Whatsapp Web
 time.sleep(15) #da um sleep de 15 segundos, tempo para scannear o QRCODE
 
 #Contatos/Grupos - Informar o nome(s) de Grupos ou Contatos que serao enviadas as mensagens
+
 contatos = ['Teste']
 
 #Mensagem - Mensagem que sera enviada
+
 mensagem = 'Bom dia '
 mensagem2 = ' '
 mensagem3 = ' Segue estoque atualizado. Boas vendas! <3'
 
 #Midia = imagem, pdf, documento, video (caminho do arquivo, lembrando que mesmo no windows o caminho deve ser passado com barra invertida */* ) 
+
 Arquivo1 = "D:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 1.png"
 Arquivo2 = "D:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 2.png"
 Arquivo3 = "D:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 3.png"
@@ -25,6 +29,7 @@ Arquivo5 = "D:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 5.png"
 Arquivo6 = "D:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 6.png"
 
 #Funcao que pesquisa o Contato/Grupo
+
 def buscar_contato(contato):
     campo_pesquisa = driver.find_element_by_xpath('//div[contains(@class,"copyable-text selectable-text")]')
     time.sleep(1)
@@ -33,6 +38,7 @@ def buscar_contato(contato):
     campo_pesquisa.send_keys(Keys.ENTER)
 
 #Funcao que envia a mensagem
+
 def enviar_mensagem(mensagem,mensagem2):
     campo_mensagem = driver.find_elements_by_xpath('//div[contains(@class,"copyable-text selectable-text")]')
     campo_mensagem[1].click()
@@ -43,6 +49,7 @@ def enviar_mensagem(mensagem,mensagem2):
     campo_mensagem[1].send_keys(Keys.ENTER)
 
 #Funcao que envia midia como mensagem
+
 def enviar_midia(Arquivo1):
     driver.find_element_by_css_selector("span[data-icon='clip']").click()
     attach = driver.find_element_by_css_selector("input[type='file']")
@@ -90,7 +97,9 @@ def enviar_midia6(Arquivo6):
     time.sleep(3)
     send = driver.find_element_by_css_selector("span[data-icon='send']")
     send.click()   
+
 #Percorre todos os contatos/Grupos e envia as mensagens
+
 for contato in contatos:
     buscar_contato(contato)
     enviar_mensagem(mensagem,mensagem2)       
@@ -106,3 +115,5 @@ for contato in contatos:
     time.sleep(1)
     enviar_midia3(Arquivo6)
     time.sleep(2)
+    driver.close(1)
+
