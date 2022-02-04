@@ -1,16 +1,19 @@
 import time
 from selenium import webdriver  
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options  
 from webdriver_manager.chrome import ChromeDriverManager 
-from selenium.webdriver.chrome.options import Options
 
+#Instanciando as options para o webdriver
 
-#Abre o Chrome
-driver = webdriver.Chrome(ChromeDriverManager().install())
-driver.get('https://web.whatsapp.com/') #abre o site Whatsapp Web
+options = webdriver.ChromeOptions()
+options.add_argument("--user-data-dir=C:/Users/Promoda/AppData/Local/Google/Chrome/User Data") 
+options.add_argument("--profile-directory=Default")
+
+driver = webdriver.Chrome(options=options,executable_path='X:/DEV/bots/whatsappEnvioDeArquivos_py/chromedriver.exe')
+
+driver.get('https://web.whatsapp.com/') #abre o site Whatsapp Web - Não pode haver janelas do chrome abertas
 time.sleep(15) #da um sleep de 15 segundos, tempo para scannear o QRCODE
-
-#Contatos/Grupos - Informar o nome(s) de Grupos ou Contatos que serao enviadas as mensagens
 
 contatos = ['Teste']
 
@@ -22,12 +25,12 @@ mensagem3 = ' Segue estoque atualizado. Boas vendas! <3'
 
 #Midia = imagem, pdf, documento, video (caminho do arquivo, lembrando que mesmo no windows o caminho deve ser passado com barra invertida */* ) 
 
-Arquivo1 = "D:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 1.png"
-Arquivo2 = "D:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 2.png"
-Arquivo3 = "D:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 3.png"
-Arquivo4 = "D:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 4.png"
-Arquivo5 = "D:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 5.png"
-Arquivo6 = "D:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 6.png"
+Arquivo1 = "x:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 1.png"
+Arquivo2 = "x:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 2.png"
+Arquivo3 = "x:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 3.png"
+Arquivo4 = "x:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 4.png"
+Arquivo5 = "x:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 5.png"
+Arquivo6 = "x:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 6.png"
 
 #Funcao que pesquisa o Contato/Grupo
 
@@ -116,5 +119,8 @@ for contato in contatos:
     time.sleep(1)
     enviar_midia3(Arquivo6)
     time.sleep(2)
-    driver.close(1)
+    driver.quit()
+    
+
+
 
