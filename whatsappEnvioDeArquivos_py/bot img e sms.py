@@ -1,10 +1,11 @@
+import time
 from selenium import webdriver  
 from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager 
-import time
+from selenium.webdriver.chrome.options import Options
+
 
 #Abre o Chrome
-
 driver = webdriver.Chrome(ChromeDriverManager().install())
 driver.get('https://web.whatsapp.com/') #abre o site Whatsapp Web
 time.sleep(15) #da um sleep de 15 segundos, tempo para scannear o QRCODE
