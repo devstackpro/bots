@@ -4,31 +4,37 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options  
 from webdriver_manager.chrome import ChromeDriverManager 
 import emoji
-#Instanciando as options para o webdriver
 
+#Instanciando as options para o webdriver
 options = webdriver.ChromeOptions()
+
+#options para manter conta do google logada com usuario principal
 options.add_argument("--user-data-dir=C:/Users/Promoda/AppData/Local/Google/Chrome/User Data") 
 options.add_argument("--profile-directory=Default")
+
+#options para manter google em segundo plano
 chrome_options = Options()  
 chrome_options.add_argument("--headless")  
 driver = webdriver.Chrome(executable_path=r'X:/DEV/bots/whatsappEnvioDeArquivos_py/chromedriver.exe',options=chrome_options)
 
-
+#comando para executar o Chromedrive
 driver = webdriver.Chrome(options=options,executable_path='X:/DEV/bots/whatsappEnvioDeArquivos_py/chromedriver.exe')
 
-driver.get('https://web.whatsapp.com/') #abre o site Whatsapp Web - Não pode haver janelas do chrome abertas
-time.sleep(15) #da um sleep de 15 segundos, tempo para scannear o QRCODE
+ #abre o site Whatsapp Web - Não pode haver janelas do chrome abertas
+driver.get('https://web.whatsapp.com/')
 
-contatos = ['Teste']
+#da um sleep de 15 segundos, tempo para scannear o QRCODE
+time.sleep(15) 
+
+#Comando para buscar contatos e grupos do wpp
+contatos = ['DGB COMEX FEATURES']
 
 #Mensagem - Mensagem que sera enviada
-
 mensagem = 'Bom dia '
 mensagem2 = ' '
 mensagem3 = ' Segue estoque atualizado. Boas vendas! ;-) '
 
 #Midia = imagem, pdf, documento, video (caminho do arquivo, lembrando que mesmo no windows o caminho deve ser passado com barra invertida */* ) 
-
 Arquivo1 = "x:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 1.png"
 Arquivo2 = "x:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 2.png"
 Arquivo3 = "x:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 3.png"
@@ -37,7 +43,6 @@ Arquivo5 = "x:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 5.png"
 Arquivo6 = "x:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 6.png"
 
 #Funcao que pesquisa o Contato/Grupo
-
 def buscar_contato(contato):
     campo_pesquisa = driver.find_element_by_xpath('//div[contains(@class,"copyable-text selectable-text")]')
     time.sleep(1)
@@ -46,7 +51,6 @@ def buscar_contato(contato):
     campo_pesquisa.send_keys(Keys.ENTER)
 
 #Funcao que envia a mensagem
-
 def enviar_mensagem(mensagem,mensagem2):
     campo_mensagem = driver.find_elements_by_xpath('//div[contains(@class,"copyable-text selectable-text")]')
     campo_mensagem[1].click()
@@ -57,7 +61,6 @@ def enviar_mensagem(mensagem,mensagem2):
     campo_mensagem[1].send_keys(Keys.ENTER)
 
 #Funcao que envia midia como mensagem
-
 def enviar_midia(Arquivo1):
     driver.find_element_by_css_selector("span[data-icon='clip']").click()
     attach = driver.find_element_by_css_selector("input[type='file']")
@@ -107,7 +110,6 @@ def enviar_midia6(Arquivo6):
     send.click()   
 
 #Percorre todos os contatos/Grupos e envia as mensagens
-
 for contato in contatos:
     buscar_contato(contato)
     enviar_mensagem(mensagem,mensagem2)       
