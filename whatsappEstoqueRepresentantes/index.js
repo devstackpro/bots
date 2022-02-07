@@ -7,12 +7,12 @@ const month = ["January","February","March","April","May","June","July","August"
 let name = month[now.getMonth()];
 
 //criando arquivos .png logo após a coleta da pagina na web **/
-gold = 'Arquivo 1' /**  + now.getDate()  + name + now.getFullYear()  + now.getHours() + now.getMinutes() **/ + '.png';
-veneza = 'Arquivo 2' /**  + now.getDate()  + name + now.getFullYear() + now.getHours() + now.getMinutes() + **/ + '.png';
-barcelona = 'Arquivo 3' /**  + now.getDate()  + name + now.getFullYear() + now.getHours() + now.getMinutes() + **/ + '.png';
-jaguar = 'Arquivo 4' /**  + now.getDate()  + name + now.getFullYear() + now.getHours() + now.getMinutes() + **/ + '.png';
-confort = 'Arquivo 5' /**  + now.getDate()  + name + now.getFullYear() + now.getHours() + now.getMinutes() + **/ + '.png';
-veludinho = 'Arquivo 6' /**  + now.getDate()  + name + now.getFullYear() + now.getHours() + now.getMinutes() + **/ + '.png';
+gold = 'Arquivo_1' /**  + now.getDate()  + name + now.getFullYear()  + now.getHours() + now.getMinutes() **/ + '.png';
+veneza = 'Arquivo_2' /**  + now.getDate()  + name + now.getFullYear() + now.getHours() + now.getMinutes() + **/ + '.png';
+barcelona = 'Arquivo_3' /**  + now.getDate()  + name + now.getFullYear() + now.getHours() + now.getMinutes() + **/ + '.png';
+jaguar = 'Arquivo_4' /**  + now.getDate()  + name + now.getFullYear() + now.getHours() + now.getMinutes() + **/ + '.png';
+confort = 'Arquivo_5' /**  + now.getDate()  + name + now.getFullYear() + now.getHours() + now.getMinutes() + **/ + '.png';
+veludinho = 'Arquivo_6' /**  + now.getDate()  + name + now.getFullYear() + now.getHours() + now.getMinutes() + **/ + '.png';
 
 // coletando dados da pagina web **//
 (async () => {

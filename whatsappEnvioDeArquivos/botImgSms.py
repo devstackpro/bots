@@ -15,10 +15,10 @@ options.add_argument("--profile-directory=Default")
 #options para manter google em segundo plano
 chrome_options = Options()  
 chrome_options.add_argument("--headless")  
-driver = webdriver.Chrome(executable_path=r'X:/DEV/bots/whatsappEnvioDeArquivos_py/chromedriver.exe',options=chrome_options)
+driver = webdriver.Chrome(executable_path=r'X:/DEV/bots/whatsappEnvioDeArquivos/chromedriver.exe',options=chrome_options)
 
 #comando para executar o Chromedrive
-driver = webdriver.Chrome(options=options,executable_path='X:/DEV/bots/whatsappEnvioDeArquivos_py/chromedriver.exe')
+driver = webdriver.Chrome(options=options,executable_path='X:/DEV/bots/whatsappEnvioDeArquivos/chromedriver.exe')
 
  #abre o site Whatsapp Web - Não pode haver janelas do chrome abertas
 driver.get('https://web.whatsapp.com/')
@@ -35,12 +35,12 @@ mensagem2 = ' '
 mensagem3 = ' Segue estoque atualizado. Boas vendas! ;-) '
 
 #Midia = imagem, pdf, documento, video (caminho do arquivo, lembrando que mesmo no windows o caminho deve ser passado com barra invertida */* ) 
-Arquivo1 = "x:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 1.png"
-Arquivo2 = "x:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 2.png"
-Arquivo3 = "x:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 3.png"
-Arquivo4 = "x:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 4.png"
-Arquivo5 = "x:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 5.png"
-Arquivo6 = "x:/DEV/bots/whatsappEstoqueRepresentantes/Arquivo 6.png"
+Arquivo1 = "x:/capturaDeTelas/Arquivo_1.png"
+Arquivo2 = "x:/capturaDeTelas/Arquivo_2.png"
+Arquivo3 = "x:/capturaDeTelas/Arquivo_3.png"
+Arquivo4 = "x:/capturaDeTelas/Arquivo_4.png"
+Arquivo5 = "x:/capturaDeTelas/Arquivo_5.png"
+Arquivo6 = "x:/capturaDeTelas/Arquivo_6.png"
 
 #Funcao que pesquisa o Contato/Grupo
 def buscar_contato(contato):
