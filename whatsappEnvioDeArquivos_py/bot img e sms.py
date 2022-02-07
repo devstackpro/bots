@@ -3,12 +3,16 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options  
 from webdriver_manager.chrome import ChromeDriverManager 
-
+import emoji
 #Instanciando as options para o webdriver
 
 options = webdriver.ChromeOptions()
 options.add_argument("--user-data-dir=C:/Users/Promoda/AppData/Local/Google/Chrome/User Data") 
 options.add_argument("--profile-directory=Default")
+chrome_options = Options()  
+chrome_options.add_argument("--headless")  
+driver = webdriver.Chrome(executable_path=r'X:/DEV/bots/whatsappEnvioDeArquivos_py/chromedriver.exe',options=chrome_options)
+
 
 driver = webdriver.Chrome(options=options,executable_path='X:/DEV/bots/whatsappEnvioDeArquivos_py/chromedriver.exe')
 
@@ -21,7 +25,7 @@ contatos = ['Teste']
 
 mensagem = 'Bom dia '
 mensagem2 = ' '
-mensagem3 = ' Segue estoque atualizado. Boas vendas! <3'
+mensagem3 = ' Segue estoque atualizado. Boas vendas! ;-) '
 
 #Midia = imagem, pdf, documento, video (caminho do arquivo, lembrando que mesmo no windows o caminho deve ser passado com barra invertida */* ) 
 
