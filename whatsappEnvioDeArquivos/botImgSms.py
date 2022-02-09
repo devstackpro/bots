@@ -12,10 +12,6 @@ options = webdriver.ChromeOptions()
 options.add_argument("--user-data-dir=C:/Users/Promoda/AppData/Local/Google/Chrome/User Data") 
 options.add_argument("--profile-directory=Default")
 
-#options para manter google em segundo plano
-chrome_options = Options()  
-chrome_options.add_argument("--headless")  
-driver = webdriver.Chrome(executable_path=r'X:/DEV/bots/whatsappEnvioDeArquivos/chromedriver.exe',options=chrome_options)
 
 #comando para executar o Chromedrive
 driver = webdriver.Chrome(options=options,executable_path='X:/DEV/bots/whatsappEnvioDeArquivos/chromedriver.exe')
