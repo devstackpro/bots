@@ -1,3 +1,4 @@
+from os import close
 import time
 import emoji
 import os.path
@@ -15,7 +16,7 @@ options.add_argument("--profile-directory=Default")
 
 
 #comando para executar o Chromedrive
-driver = webdriver.Chrome(options=options,executable_path='C:/DEV/bots/whatsappEnvioDeArquivos/chromedriver.exe')
+driver = webdriver.Chrome(options=options,executable_path='X:/DEV/bots/whatsappEnvioDeArquivos/chromedriver.exe')
 
  #abre o site Whatsapp Web - Não pode haver janelas do chrome abertas
 driver.get('https://web.whatsapp.com/')
@@ -109,44 +110,50 @@ def enviar_midia6(Arquivo6):
     attach.send_keys(Arquivo6)
     time.sleep(3)
     send = driver.find_element_by_css_selector("span[data-icon='send']")
-    send.click()   
+    send.click()  
+
+
+
 try:
-    verificar = open('X:\capturaDeTelas\success.txt')
-    verificar.close()
+    verificarSuccess = open('X:\capturaDeTelas\success.txt')     
+    verificarSuccess.close()
+
 except:
-    verificar.close('X:/DEV/bots/whatsappEnvioDeArquivos/chromedriver.exe')
-    print('O arquivo não existe!')
+    driver.close()
 
-
-if(open('X:\capturaDeTelas\success.txt')){
+if(verificarSuccess): 
     
-
-
-} else {
-
-}
-
-
 #Percorre todos os contatos/Grupos e envia as mensagens
-for contato in contatosHomologacao:
-    buscar_contato(contato)
-    enviar_mensagem(mensagem,mensagem2) 
-    time.sleep(2)      
-    enviar_midia(Arquivo1)
-    time.sleep(1)
-    enviar_midia2(Arquivo2)
-    time.sleep(1)
-    enviar_midia3(Arquivo3)
-    time.sleep(1)
-    enviar_midia4(Arquivo4)
-    time.sleep(1)
-    enviar_midia5(Arquivo5)
-    time.sleep(1)
-    enviar_midia3(Arquivo6)
-    time.sleep(2)
+    for  contato in contatosHomologacao: 
+        buscar_contato(contato)
+        enviar_mensagem(mensagem,mensagem2) 
+        time.sleep(2)      
+        enviar_midia(Arquivo1)
+        time.sleep(1)
+        enviar_midia2(Arquivo2)
+        time.sleep(1)
+        enviar_midia3(Arquivo3)
+        time.sleep(1)
+        enviar_midia4(Arquivo4)
+        time.sleep(1)
+        enviar_midia5(Arquivo5)
+        time.sleep(1)
+        enviar_midia3(Arquivo6)
+        time.sleep(2)
     
-driver.quit()
+else: 
+    print('success nao existe')
+    driver.close()
+
+
+driver.close()
+
     
+
+    
+
+
+
 
 
 
