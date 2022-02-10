@@ -1,0 +1,2 @@
+Iniciando projeto de scrapping para captura de imagens na web para criação de repositorio local 
+Instalando biblioteca puppeteer no projeto - $ npm i puppeteer-core

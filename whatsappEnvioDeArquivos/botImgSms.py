@@ -1,42 +1,49 @@
 import time
+import emoji
 from selenium import webdriver  
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options  
 from webdriver_manager.chrome import ChromeDriverManager 
-import emoji
+
 
 #Instanciando as options para o webdriver
 options = webdriver.ChromeOptions()
 
 #options para manter conta do google logada com usuario principal
+
 options.add_argument("--user-data-dir=C:/Users/Promoda/AppData/Local/Google/Chrome/User Data") 
 options.add_argument("--profile-directory=Default")
-
+options.add_argument("--headless")
 
 #comando para executar o Chromedrive
 driver = webdriver.Chrome(options=options,executable_path='X:/DEV/bots/whatsappEnvioDeArquivos/chromedriver.exe')
 
- #abre o site Whatsapp Web - Não pode haver janelas do chrome abertas
+#abre o site Whatsapp Web - Não pode haver janelas do chrome abertas
 driver.get('https://web.whatsapp.com/')
 
 #da um sleep de 15 segundos, tempo para scannear o QRCODE
 time.sleep(15) 
 
 #Comando para buscar contatos e grupos do wpp
-contatos = ['DGB COMEX FEATURES']
+contatosProducao = ['Rudimar repDgb','Adriano Promoda','Cel Itj repDgb','Alessandro repDgb','Tufic repDgb',
+            'Tiago repDgb','Eduardo DGB','Ronaldo  repDgb','Abrantes repDgb','Carlos repDgb','Igor repDgb',
+                'Jon Willa repDgb','Paganini repDgb','Rodrigo Gonçalves repD gb','Mara repDgb','Renato Spama repDgb',
+                 'Monica repDgb','Rodrigo Porto repDgb', 'DEV HOMOLOGAÇÃO']
+
+contatosHomologacao = ['Teste']
 
 #Mensagem - Mensagem que sera enviada
-mensagem = 'Bom dia '
+mensagem = 'Bom dia'
 mensagem2 = ' '
 mensagem3 = ' Segue estoque atualizado. Boas vendas! ;-) '
 
 #Midia = imagem, pdf, documento, video (caminho do arquivo, lembrando que mesmo no windows o caminho deve ser passado com barra invertida */* ) 
-Arquivo1 = "x:/capturaDeTelas/Arquivo_1.png"
-Arquivo2 = "x:/capturaDeTelas/Arquivo_2.png"
-Arquivo3 = "x:/capturaDeTelas/Arquivo_3.png"
-Arquivo4 = "x:/capturaDeTelas/Arquivo_4.png"
-Arquivo5 = "x:/capturaDeTelas/Arquivo_5.png"
-Arquivo6 = "x:/capturaDeTelas/Arquivo_6.png"
+Arquivo1 = "X:\capturaDeTelas/Arquivo_1.png"
+Arquivo2 = "X:\capturaDeTelas/Arquivo_2.png"
+Arquivo3 = "X:\capturaDeTelas/Arquivo_3.png"
+Arquivo4 = "X:\capturaDeTelas/Arquivo_4.png"
+Arquivo5 = "X:\capturaDeTelasArquivo_5.png"
+Arquivo6 = "X:\capturaDeTelas/Arquivo_6.png"
 
 #Funcao que pesquisa o Contato/Grupo
 def buscar_contato(contato):
@@ -106,9 +113,10 @@ def enviar_midia6(Arquivo6):
     send.click()   
 
 #Percorre todos os contatos/Grupos e envia as mensagens
-for contato in contatos:
+for contato in contatosHomologacao:
     buscar_contato(contato)
-    enviar_mensagem(mensagem,mensagem2)       
+    enviar_mensagem(mensagem,mensagem2) 
+    time.sleep(2)      
     enviar_midia(Arquivo1)
     time.sleep(1)
     enviar_midia2(Arquivo2)
@@ -121,7 +129,8 @@ for contato in contatos:
     time.sleep(1)
     enviar_midia3(Arquivo6)
     time.sleep(2)
-    driver.quit()
+    
+driver.quit()
     
 
 
