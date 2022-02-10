@@ -99,24 +99,8 @@ success = '';
       }
       console.log("Arquivo de log salvo");
     }); 
-    
-    /** criar código para apagar arquivo success.txt */
-    var fs = require('fs');
-    var filePath = 'D://capturaDeTelas//success.txt'; 
-    fs.unlinkSync(filePath);
-    filePath = 'D://capturaDeTelas//Arquivo_1.png';
-    fs.unlinkSync(filePath); 
-    filePath = 'D://capturaDeTelas//Arquivo_2.png'; 
-    fs.unlinkSync(filePath);
-    filePath = 'D://capturaDeTelas//Arquivo_3.png'; 
-    fs.unlinkSync(filePath);
-    filePath = 'D://capturaDeTelas//Arquivo_4.png'; 
-    fs.unlinkSync(filePath);
-    filePath = 'D://capturaDeTelas//Arquivo_5.png'; 
-    fs.unlinkSync(filePath);
-    filePath = 'D://capturaDeTelas//Arquivo_6.png'; 
-    fs.unlinkSync(filePath);
-    
+
+
   } else { // criando aquivo quando success .txt
     var fs = require('fs');
     
@@ -135,6 +119,34 @@ success = '';
     });
     
   }
+
+   // criar código para apagar arquivo success.txt e .png 
+   var fs = require('fs');
+   var gutil = require('gulp-util');
+   var filePath = require ('filePath'); 
+
+   fs.exists('D://capturaDeTelas//success.txt', function(exists) {
+     if(exists) {
+       //mostra em verde
+       console.log(gutil.colors.green('File exists. Deleting now ...'));
+       fs.unlink('D://capturaDeTelas//success.txt');
+       filePath = 'D://capturaDeTelas//Arquivo_1.png';
+       fs.unlinkSync(filePath); 
+       filePath = 'D://capturaDeTelas//Arquivo_2.png'; 
+       fs.unlinkSync(filePath);
+       filePath = 'D://capturaDeTelas//Arquivo_3.png'; 
+       fs.unlinkSync(filePath);
+       filePath = 'D://capturaDeTelas//Arquivo_4.png'; 
+       fs.unlinkSync(filePath);
+       filePath = 'D://capturaDeTelas//Arquivo_5.png'; 
+       fs.unlinkSync(filePath);
+       filePath = 'D://capturaDeTelas//Arquivo_6.png'; 
+       fs.unlinkSync(filePath);
+     } else {
+       //mostra em vermelho
+       console.log(gutil.colors.red('File not found, so not deleting.'));
+     }
+       });
  
 await browser.close();
 
