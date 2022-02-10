@@ -1,24 +1,23 @@
 import time
 import emoji
+import os.path
 from selenium import webdriver  
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options  
 from webdriver_manager.chrome import ChromeDriverManager 
 
-
 #Instanciando as options para o webdriver
 options = webdriver.ChromeOptions()
 
 #options para manter conta do google logada com usuario principal
-
-options.add_argument("--user-data-dir=C:/Users/Promoda/AppData/Local/Google/Chrome/User Data") 
+options.add_argument("--user-data-dir=C:/Users/MV002/AppData/Local/Google/Chrome/User Data") 
 options.add_argument("--profile-directory=Default")
-options.add_argument("--headless")
+
 
 #comando para executar o Chromedrive
-driver = webdriver.Chrome(options=options,executable_path='X:/DEV/bots/whatsappEnvioDeArquivos/chromedriver.exe')
+driver = webdriver.Chrome(options=options,executable_path='C:/DEV/bots/whatsappEnvioDeArquivos/chromedriver.exe')
 
-#abre o site Whatsapp Web - Não pode haver janelas do chrome abertas
+ #abre o site Whatsapp Web - Não pode haver janelas do chrome abertas
 driver.get('https://web.whatsapp.com/')
 
 #da um sleep de 15 segundos, tempo para scannear o QRCODE
@@ -38,12 +37,12 @@ mensagem2 = ' '
 mensagem3 = ' Segue estoque atualizado. Boas vendas! ;-) '
 
 #Midia = imagem, pdf, documento, video (caminho do arquivo, lembrando que mesmo no windows o caminho deve ser passado com barra invertida */* ) 
-Arquivo1 = "X:\capturaDeTelas/Arquivo_1.png"
-Arquivo2 = "X:\capturaDeTelas/Arquivo_2.png"
-Arquivo3 = "X:\capturaDeTelas/Arquivo_3.png"
-Arquivo4 = "X:\capturaDeTelas/Arquivo_4.png"
-Arquivo5 = "X:\capturaDeTelasArquivo_5.png"
-Arquivo6 = "X:\capturaDeTelas/Arquivo_6.png"
+Arquivo1 = "X:/capturaDeTelas/Arquivo_1.png"
+Arquivo2 = "X:/capturaDeTelas/Arquivo_2.png"
+Arquivo3 = "X:/capturaDeTelas/Arquivo_3.png"
+Arquivo4 = "X:/capturaDeTelas/Arquivo_4.png"
+Arquivo5 = "X:/capturaDeTelas/Arquivo_5.png"
+Arquivo6 = "X:/capturaDeTelas/Arquivo_6.png"
 
 #Funcao que pesquisa o Contato/Grupo
 def buscar_contato(contato):
@@ -111,6 +110,22 @@ def enviar_midia6(Arquivo6):
     time.sleep(3)
     send = driver.find_element_by_css_selector("span[data-icon='send']")
     send.click()   
+try:
+    verificar = open('X:\capturaDeTelas\success.txt')
+    verificar.close()
+except:
+    verificar.close('X:/DEV/bots/whatsappEnvioDeArquivos/chromedriver.exe')
+    print('O arquivo não existe!')
+
+
+if(open('X:\capturaDeTelas\success.txt')){
+    
+
+
+} else {
+
+}
+
 
 #Percorre todos os contatos/Grupos e envia as mensagens
 for contato in contatosHomologacao:
@@ -132,6 +147,11 @@ for contato in contatosHomologacao:
     
 driver.quit()
     
+
+
+
+
+
 
 
 

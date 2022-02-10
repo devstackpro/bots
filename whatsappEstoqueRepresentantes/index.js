@@ -3,8 +3,6 @@ const puppeteer = require('puppeteer');
 const now = new Date;
 
 var dataAtual = new Date();
-  //console.log(dataAtual);
-  //console.log(name);
 
 const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
@@ -36,7 +34,6 @@ success = '';
       log = log + err + ' | ';
       await browser.close()
     }
-
   
   try {
     await page.goto('http://94550ac37bb5.sn.mynetname.net:15001/dev/dgb_/prodash/estoque_pronta_entrega_veneza.php');
@@ -49,7 +46,6 @@ success = '';
       await browser.close()
     }
 
-
   try {        
     await page.goto('http://94550ac37bb5.sn.mynetname.net:15001/dev/dgb_/prodash/estoque_pronta_entrega_barcelona.php');
     await page.screenshot({ path: '../../../capturaDeTelas/' + barcelona, fullPage:true });
@@ -60,7 +56,6 @@ success = '';
       log = log + err + ' | ';
       await browser.close()
     }
-
 
   try {        
     await page.goto('http://94550ac37bb5.sn.mynetname.net:15001/dev/dgb_/prodash/estoque_pronta_entrega_jaguar.php');
@@ -73,7 +68,6 @@ success = '';
       await browser.close()
     }
 
-
   try {      
     await page.goto('http://94550ac37bb5.sn.mynetname.net:15001/dev/dgb_/prodash/estoque_pronta_entrega_confort.php');
     await page.screenshot({ path: '../../../capturaDeTelas/' + confort, fullPage:true });
@@ -85,7 +79,6 @@ success = '';
       await browser.close()
     }
 
-
   try {       
     await page.goto('http://94550ac37bb5.sn.mynetname.net:15001/dev/dgb_/prodash/estoque_pronta_entrega_veludinho.php');
     await page.screenshot({ path: '../../../capturaDeTelas/' + veludinho, fullPage:true });
@@ -96,42 +89,53 @@ success = '';
       log = log + err + ' | ';
       await browser.close()
     }
-
-
-  /** try {       
-    await page.goto('http://dgbcomex.com.br');
-    await page.screenshot({ path: '../../../capturaDeTelas/' + contadorScreenshot + '.png', fullPage:true });
-  } catch (err) {
-      console.log(err);
-      log = log + err + ' | ';
-      await browser.close()
-    }**/
-
-    if (log) {
-      var fs = require('fs');
-      
-        fs.writeFile("D://capturaDeTelas//log.txt", now.getDate()  + name + now.getFullYear()  + now.getHours() + now.getMinutes() + log + ' | ', function(erro) {
-
-        if(erro) {
-          throw erro;
-        }
-        console.log("Arquivo salvo");
-      });  
-    } else{
-      var fs = require('fs');
-      
-        fs.writeFile("D://capturaDeTelas//log.txt", now.getDate()  + name + now.getFullYear()  + now.getHours() + now.getMinutes() + 'success | ', function(erro) {
-
-        if(erro) {
-          throw erro;
-        }
-        console.log("Arquivo salvo");
-      });  
-
-    }
-
-
-  
-
+ 
+  if (log) { // criando aquivo quando erro .txt
+    var fs = require('fs');
+    
+    fs.writeFile("D://capturaDeTelas//log.txt", now.getDate()  + name + now.getFullYear()  + now.getHours() + now.getMinutes() + log + ' | ', function(erro) {
+      if(erro) {
+        throw erro;
+      }
+      console.log("Arquivo de log salvo");
+    }); 
+    
+    /** criar código para apagar arquivo success.txt */
+    var fs = require('fs');
+    var filePath = 'D://capturaDeTelas//success.txt'; 
+    fs.unlinkSync(filePath);
+    filePath = 'D://capturaDeTelas//Arquivo_1.png';
+    fs.unlinkSync(filePath); 
+    filePath = 'D://capturaDeTelas//Arquivo_2.png'; 
+    fs.unlinkSync(filePath);
+    filePath = 'D://capturaDeTelas//Arquivo_3.png'; 
+    fs.unlinkSync(filePath);
+    filePath = 'D://capturaDeTelas//Arquivo_4.png'; 
+    fs.unlinkSync(filePath);
+    filePath = 'D://capturaDeTelas//Arquivo_5.png'; 
+    fs.unlinkSync(filePath);
+    filePath = 'D://capturaDeTelas//Arquivo_6.png'; 
+    fs.unlinkSync(filePath);
+    
+  } else { // criando aquivo quando success .txt
+    var fs = require('fs');
+    
+    fs.writeFile("D://capturaDeTelas//log.txt", now.getDate()  + name + now.getFullYear()  + now.getHours() + now.getMinutes() +' | ' + ' success ' + ' | ', function(erro) {
+      if(erro) {
+        throw erro;
+      }
+      console.log("Arquivo de log salvo");
+    }); 
+    
+    fs.writeFile("D://capturaDeTelas//success.txt", now.getDate()  + name + now.getFullYear()  + now.getHours() + now.getMinutes() +' | ' + contadorScreenshot + ' | ', function(erro) {
+      if(erro) {
+        throw erro;
+      }
+      console.log("Arquivo de success salvo");
+    });
+    
+  }
+ 
 await browser.close();
+
 })();
